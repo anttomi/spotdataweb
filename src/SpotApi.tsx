@@ -30,7 +30,7 @@ export class SpotApi {
         })
 
         return Promise.all(fileArray).then((v) => {
-            console.log(encodeURIComponent(JSON.stringify(v)))
+            //console.log(encodeURIComponent(JSON.stringify(v)))
             
             formData.append("streams", JSON.stringify(v))
     

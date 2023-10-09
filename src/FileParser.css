@@ -15,7 +15,22 @@
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    width: 100%;
+}
+
+.Artist-Name {
+    flex: 8;
+    text-align: left;
+}
+
+.Artist-Upper-Right {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    flex: 2;
+}
+
+.Artist-Upper-Right p {
+    margin: 0;
 }
 
 @keyframes ripple {
@@ -31,4 +46,3 @@
     animation-timing-function: ease-in-out;
     box-shadow: 0px 0px;
 }
-

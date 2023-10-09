@@ -13,5 +13,6 @@ export interface Album {
 export interface Artist {
     name: string,
     msPlayed: number,
-    albums: Array<Album>
+    albums: Array<Album>,
+    totalPlayCount: number
 }
