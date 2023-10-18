@@ -1,42 +1,60 @@
-import { LegacyRef, useEffect, useRef, useState } from "react"
-import { SpotApi } from "./SpotApi"
+import { FunctionComponent, useEffect, useState } from "react"
 import { Artist } from "./interfaces"
 import './FileParser.css'
+import { collectStreamData } from "./parser"
 
-export default function FileParser() {
+const getBase64 = (file: File) => {
+    return new Promise<string>((resolve, reject) => {
+        const fileReader = new FileReader()
+        fileReader.readAsBinaryString(file)
 
-    const [streamingData, setStreamingData] = useState(Array<Artist>)
-    const [loading, setLoading] = useState(false)
+        fileReader.onload = () => {
+            resolve(fileReader.result as string)
+        }
+        fileReader.onerror = (error) => {
+            reject(error)
+        }
 
-    const onFileLoad = (e: React.ChangeEvent<HTMLInputElement>) => {
+    })
+}
+
+const FileParser: FunctionComponent = () => {
+
+    const [streamingData, setStreamingData] = useState<Array<Artist>>([])
+    const [loading, setLoading] = useState(true)
+
+    const onFileLoad = async (e: React.ChangeEvent<HTMLInputElement>) => {
 
         if (!e.target.files) return
 
-        setLoading(() => true)
-        
-        SpotApi.getParsedData(e.target.files)
-        .then((r) => {
-            console.log(r)
-            setStreamingData(r.streamingData)
+        //Read all files
+        const fileArray: Promise<string>[] = []
+
+        Array.from(e.target.files).forEach((file) => {
+            fileArray.push(getBase64(file))
+        })
+
+        Promise.all(fileArray).then((r) => {
+            console.log(collectStreamData(r, 5000))
+            setStreamingData(collectStreamData(r, 5000))
             setLoading(() => false)
         })
-        .catch((e) => console.error(e))
     }
 
-    const openArtist = () => {
-        
+    const openArtist = (artist: Artist) => {
+ 
     }
 
     return (
         <div>
             <input type="file" name="fileInput" multiple accept={".json"} onChange={onFileLoad}></input>
-            {streamingData &&
-                streamingData.map((artist:Artist,key) => (
-                    <div key={key} className="Artist-Container" onClick={openArtist}>
+            {streamingData ?
+                streamingData.map((artist: Artist, key) => (
+                    <div key={key} className="Artist-Container" onClick={() => openArtist(artist)}>
                         <div className="Artist-Upper">
                             <p className="Artist-Name" >{artist.name}</p>
                             <div className="Artist-Upper-Right">
-                                <p className="Artist-Played">{(artist.msPlayed/3_600_000).toFixed(2)} h</p>
+                                <p className="Artist-Played">{(artist.msPlayed / 3_600_000).toFixed(2)} h</p>
                                 <p className="Artist-TotalPlayCount">{artist.totalPlayCount} streams</p>
                             </div>
                         </div>
@@ -48,7 +66,10 @@ export default function FileParser() {
                         </div>
                     </div>
                 ))
-            }
+                : <div>Loading...</div>}
         </div>
+
     )
 }
+
+export default FileParser
