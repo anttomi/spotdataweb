@@ -14,18 +14,19 @@ const getBase64 = (file: File) => {
         fileReader.onerror = (error) => {
             reject(error)
         }
-
     })
 }
 
 const FileParser: FunctionComponent = () => {
 
     const [streamingData, setStreamingData] = useState<Array<Artist>>([])
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState<Boolean>()
 
     const onFileLoad = async (e: React.ChangeEvent<HTMLInputElement>) => {
 
         if (!e.target.files) return
+
+        setLoading(() => true)
 
         //Read all files
         const fileArray: Promise<string>[] = []
@@ -47,8 +48,11 @@ const FileParser: FunctionComponent = () => {
 
     return (
         <div>
-            <input type="file" name="fileInput" multiple accept={".json"} onChange={onFileLoad}></input>
-            {streamingData ?
+            <div className="Inputs">
+                <label htmlFor="fileInput">Select files: </label>
+                <input type="file" name="fileInput" multiple accept={".json"} onChange={onFileLoad}></input>
+            </div>
+            {loading === false ?
                 streamingData.map((artist: Artist, key) => (
                     <div key={key} className="Artist-Container" onClick={() => openArtist(artist)}>
                         <div className="Artist-Upper">
@@ -66,7 +70,7 @@ const FileParser: FunctionComponent = () => {
                         </div>
                     </div>
                 ))
-                : <div>Loading...</div>}
+                : loading === undefined ? <></> : <div>Loading...</div>}
         </div>
 
     )
