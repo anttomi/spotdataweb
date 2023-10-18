@@ -13,7 +13,7 @@ export function collectStreamData(files: string[], threshold: number): Artist[] 
     const streamData: Artist[] = []
 
     files.forEach((fd) => {  
-        //Must await since promises
+        
         const streamJSON: Object = JSON.parse(fd)
 
         Object.values(streamJSON).forEach((stream: Record<string, any>, i: number) => {

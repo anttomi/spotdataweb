@@ -27,34 +27,43 @@ const FileParser: FunctionComponent = () => {
         if (!e.target.files) return
 
         setLoading(() => true)
-
-        //Read all files
+        
         const fileArray: Promise<string>[] = []
 
+        //Read all files
         Array.from(e.target.files).forEach((file) => {
             fileArray.push(getBase64(file))
         })
 
         Promise.all(fileArray).then((r) => {
-            console.log(collectStreamData(r, 5000))
             setStreamingData(collectStreamData(r, 5000))
             setLoading(() => false)
         })
     }
 
-    const openArtist = (artist: Artist) => {
- 
-    }
-
     return (
-        <div>
-            <div className="Inputs">
-                <label htmlFor="fileInput">Select files: </label>
-                <input type="file" name="fileInput" multiple accept={".json"} onChange={onFileLoad}></input>
-            </div>
+        <div className="Main-Content">
+            <form className="Inputs">
+                <div>
+                    <label htmlFor="fileInput">Select files:</label>
+                    <input type="file" name="fileInput" multiple accept={".json"} onChange={onFileLoad}/>
+                </div>
+                <div>
+                    <label htmlFor="threshold">Threshold:</label>
+                    <input type="number" name="threshold"></input>
+                </div>
+                <div>
+                    <label htmlFor="format">Format: </label>
+                    <select name="format">
+                        {[{id: 1, label: "ms"}, {id: 2, label: "s"}].map((option) => (
+                            <option key={option.id} value={option.label}>{option.label}</option>
+                        ))}
+                    </select>
+                </div>
+            </form>
             {loading === false ?
                 streamingData.map((artist: Artist, key) => (
-                    <div key={key} className="Artist-Container" onClick={() => openArtist(artist)}>
+                    <div key={key} className="Artist-Container">
                         <div className="Artist-Upper">
                             <p className="Artist-Name" >{artist.name}</p>
                             <div className="Artist-Upper-Right">

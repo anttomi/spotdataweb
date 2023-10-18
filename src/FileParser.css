@@ -49,7 +49,23 @@
 }
 
 .Inputs {
-    display: "flex";
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Inputs label {
+    margin-left: 4px;
+    margin-right: 4px;
+    text-align: left;
+}
+
+.Inputs div {
+    margin-right: 8px;
+}
+
+.Main-Content {
+    display: flex;
+    width: 100%;
     flex-direction: column;
-    height: 40
 }
