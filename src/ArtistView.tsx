@@ -17,7 +17,7 @@ export default function ArtistView({artist}: {artist: Artist}): JSX.Element {
             <div className="Artist-Middle">
                 
                 <span>
-                    Album count: {artist.albums.length}
+                    {`Streams from ${artist.albums.length} album${artist.albums.length>1 ? "s" : ""}`} 
                 </span>
             </div>
             <div className="Artist-Bottom">
