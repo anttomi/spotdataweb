@@ -2,6 +2,7 @@ import { FunctionComponent, useEffect, useState } from "react"
 import { Artist } from "./interfaces"
 import './FileParser.css'
 import { collectStreamData } from "./parser"
+import ArtistView from "./ArtistView"
 
 const getBase64 = (file: File) => {
     return new Promise<string>((resolve, reject) => {
@@ -63,21 +64,7 @@ const FileParser: FunctionComponent = () => {
             </form>
             {loading === false ?
                 streamingData.map((artist: Artist, key) => (
-                    <div key={key} className="Artist-Container">
-                        <div className="Artist-Upper">
-                            <p className="Artist-Name" >{artist.name}</p>
-                            <div className="Artist-Upper-Right">
-                                <p className="Artist-Played">{(artist.msPlayed / 3_600_000).toFixed(2)} h</p>
-                                <p className="Artist-TotalPlayCount">{artist.totalPlayCount} streams</p>
-                            </div>
-                        </div>
-                        <div className="Artist-Middle">
-
-                        </div>
-                        <div className="Artist-Bottom">
-
-                        </div>
-                    </div>
+                    <ArtistView artist={artist} key={key}></ArtistView>
                 ))
                 : loading === undefined ? <></> : <div>Loading...</div>}
         </div>

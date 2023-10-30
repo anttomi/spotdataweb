@@ -1,51 +1,7 @@
-.Artist-Container {
-    border: 2px outset white;
-    border-radius: 7px;
-    padding: 5px;
-    margin: 10px;
+.Main-Content {
     display: flex;
+    width: 100%;
     flex-direction: column;
-    cursor: pointer;
-}
-
-.Artist-Name {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.Artist-Upper {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-}
-
-.Artist-Name {
-    flex: 8;
-    text-align: left;
-}
-
-.Artist-Upper-Right {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    flex: 2;
-}
-
-.Artist-Upper-Right p {
-    margin: 0;
-}
-
-@keyframes ripple {
-    0% {background: initial;}
-    50% {background: rgba(144, 238, 144, 0.3);}
-    100% {background: initial;}
-}
-
-.Artist-Container:hover {
-    animation-name: ripple;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-    box-shadow: 0px 0px;
 }
 
 .Inputs {
@@ -62,10 +18,4 @@
 
 .Inputs div {
     margin-right: 8px;
-}
-
-.Main-Content {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
 }
