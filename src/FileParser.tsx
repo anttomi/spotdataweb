@@ -1,4 +1,4 @@
-import { FunctionComponent, useEffect, useState } from "react"
+import { FunctionComponent, useState } from "react"
 import { Artist } from "./interfaces"
 import './FileParser.css'
 import { collectStreamData } from "./parser"
@@ -37,7 +37,7 @@ const FileParser: FunctionComponent = () => {
         })
 
         Promise.all(fileArray).then((r) => {
-            setStreamingData(collectStreamData(r, 5000).sort((a,b) => {
+            setStreamingData(collectStreamData(r, 5000).filter((a: Artist) => a.totalPlayCount !== 0).sort((a,b) => {
                 return a.msPlayed > b.msPlayed ? -1 : 1}
             ))
             setLoading(() => false)
@@ -53,7 +53,7 @@ const FileParser: FunctionComponent = () => {
                 </div>
                 <div>
                     <label htmlFor="threshold">Threshold:</label>
-                    <input type="number" name="threshold"></input>
+                    <input type="number" defaultValue={5000} name="threshold"></input>
                 </div>
                 <div>
                     <label htmlFor="format">Format: </label>
@@ -66,7 +66,7 @@ const FileParser: FunctionComponent = () => {
                 <div>
                     <label htmlFor="order">Sort by: </label>
                     <select name="order">
-                            {[{id:1, label: "streams"}, {id: 2, label: "hours"}].map((option) => (
+                            {[{id:1, label: "hours"}, {id: 2, label: "streams"}].map((option) => (
                                 <option key={option.id} value={option.label}>{option.label}</option>
                             ))}
                     </select>

@@ -52,7 +52,7 @@ export function collectStreamData(files: string[], threshold: number): Artist[] 
 
             if (cs.duration >= threshold) {
                 artist.msPlayed += cs.duration
-                //Could be counted afterwards from Tracks or could be implemented in classes
+                //Could be counted afterwards from Tracks or could be implemented in class methods
                 artist.totalPlayCount += 1
                 track.playCount += 1
             }

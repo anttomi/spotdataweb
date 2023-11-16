@@ -1,14 +1,13 @@
 .Header-Container h2 {
     margin: 0;
-    position: absolute;
-    left: 0;
-    top: 0;
     padding: 4px;
   }
 
 .Header-Container img {
-  position: absolute;
-  right: 0;
-  top: 0;
   padding: 4px 12px 4px
+}
+
+.Header-Container {
+    display: flex;
+    justify-content: space-between;
 }

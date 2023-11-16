@@ -31,7 +31,10 @@ export default function ArtistView({artist}: {artist: Artist}): JSX.Element {
             </div>
             {open &&
                 <div className="AlbumCard-Container">
-                    {artist.albums.map((album: Album, key) => (
+                    {artist.albums.sort((a,b) => 
+                        a.tracks.reduce((acc, current) => acc + current.playCount, 0) > b.tracks.reduce((acc, current) => acc + current.playCount, 0) ? -1 : 1
+                    )
+                    .map((album: Album, key) => (
                         <AlbumCard album={album} key={key}/>
                     ))}
                 </div>
