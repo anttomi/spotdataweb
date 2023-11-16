@@ -30,7 +30,7 @@ export default function ArtistView({artist}: {artist: Artist}): JSX.Element {
                 </div>
             </div>
             {open &&
-                <div>
+                <div className="AlbumCard-Container">
                     {artist.albums.map((album: Album, key) => (
                         <AlbumCard album={album} key={key}/>
                     ))}
