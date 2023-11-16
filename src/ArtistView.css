@@ -36,7 +36,7 @@
 
 @keyframes ripple {
     0% {background: initial;}
-    50% {background: rgba(144, 238, 144, 0.3);}
+    50% {background: rgba(144, 238, 144, 0.205);}
     100% {background: initial;}
 }
 

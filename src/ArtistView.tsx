@@ -1,10 +1,14 @@
-import React from "react";
 import { Artist, Album } from "./interfaces";
 import "./ArtistView.css"
+import { useState } from "react";
+import AlbumCard from "./AlbumCard";
 
 export default function ArtistView({artist}: {artist: Artist}): JSX.Element {
+
+    const [open, setOpen] = useState(false)
+
     return (
-        <div className="Artist-Container">
+        <div className="Artist-Container" onClick={() => {setOpen(prev => !prev)}}>
             <div className="Artist-Upper">
        
                 <p className="Artist-Name" >{artist.name}</p>
@@ -25,6 +29,13 @@ export default function ArtistView({artist}: {artist: Artist}): JSX.Element {
                   
                 </div>
             </div>
+            {open &&
+                <div>
+                    {artist.albums.map((album: Album, key) => (
+                        <AlbumCard album={album} key={key}/>
+                    ))}
+                </div>
+            }
         </div>
     )
 }

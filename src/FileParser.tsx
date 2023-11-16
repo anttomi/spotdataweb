@@ -37,7 +37,9 @@ const FileParser: FunctionComponent = () => {
         })
 
         Promise.all(fileArray).then((r) => {
-            setStreamingData(collectStreamData(r, 5000))
+            setStreamingData(collectStreamData(r, 5000).sort((a,b) => {
+                return a.msPlayed > b.msPlayed ? -1 : 1}
+            ))
             setLoading(() => false)
         })
     }
@@ -59,6 +61,14 @@ const FileParser: FunctionComponent = () => {
                         {[{id: 1, label: "ms"}, {id: 2, label: "s"}].map((option) => (
                             <option key={option.id} value={option.label}>{option.label}</option>
                         ))}
+                    </select>
+                </div>
+                <div>
+                    <label htmlFor="order">Sort by: </label>
+                    <select name="order">
+                            {[{id:1, label: "streams"}, {id: 2, label: "hours"}].map((option) => (
+                                <option key={option.id} value={option.label}>{option.label}</option>
+                            ))}
                     </select>
                 </div>
             </form>
