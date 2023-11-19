@@ -54,6 +54,8 @@ export function collectStreamData(files: string[], threshold: number): Artist[] 
                 artist.msPlayed += cs.duration
                 //Could be counted afterwards from Tracks or could be implemented in class methods
                 artist.totalPlayCount += 1
+                //Could be counted afterwards with reduce, but why bother if you can count it here
+                album.albumPlayCount += 1
                 track.playCount += 1
             }
         })

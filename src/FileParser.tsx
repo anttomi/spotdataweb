@@ -1,8 +1,13 @@
-import { FunctionComponent, useState } from "react"
+import { FunctionComponent, useRef, useState } from "react"
 import { Artist } from "./interfaces"
 import './FileParser.css'
 import { collectStreamData } from "./parser"
 import ArtistView from "./ArtistView"
+
+interface FormElements extends HTMLFormElement {
+    threshold: HTMLInputElement;
+}
+
 
 const getBase64 = (file: File) => {
     return new Promise<string>((resolve, reject) => {
@@ -23,21 +28,21 @@ const FileParser: FunctionComponent = () => {
     const [streamingData, setStreamingData] = useState<Array<Artist>>([])
     const [loading, setLoading] = useState<Boolean>()
 
-    const onFileLoad = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const onFileLoad = async (files: FileList, threshold: number) => {
 
-        if (!e.target.files) return
+        if (files.length < 1) return
 
         setLoading(() => true)
-        
+
         const fileArray: Promise<string>[] = []
 
         //Read all files
-        Array.from(e.target.files).forEach((file) => {
+        Array.from(files).forEach((file) => {
             fileArray.push(getBase64(file))
         })
 
         Promise.all(fileArray).then((r) => {
-            setStreamingData(collectStreamData(r, 5000).filter((a: Artist) => a.totalPlayCount !== 0).sort((a,b) => {
+            setStreamingData(collectStreamData(r, threshold).filter((a: Artist) => a.totalPlayCount !== 0).sort((a,b) => {
                 return a.msPlayed > b.msPlayed ? -1 : 1}
             ))
             setLoading(() => false)
@@ -46,31 +51,25 @@ const FileParser: FunctionComponent = () => {
 
     return (
         <div className="Main-Content">
-            <form className="Inputs">
+            <form onSubmit={(e) => {
+                    e.preventDefault(); 
+                    const formValues = e.target as FormElements
+                    onFileLoad(
+                        formValues.fileInput.files,
+                        Number(formValues.threshold.value),
+                    )
+                }} 
+                className="Inputs">
                 <div>
                     <label htmlFor="fileInput">Select files:</label>
-                    <input type="file" name="fileInput" multiple accept={".json"} onChange={onFileLoad}/>
+                    <input type="file" name="fileInput" multiple accept={".json"}/>
                 </div>
                 <div>
-                    <label htmlFor="threshold">Threshold:</label>
+                    <label htmlFor="threshold">Stream threshold (ms):</label>
                     <input type="number" defaultValue={5000} name="threshold"></input>
                 </div>
-                <div>
-                    <label htmlFor="format">Format: </label>
-                    <select name="format">
-                        {[{id: 1, label: "ms"}, {id: 2, label: "s"}].map((option) => (
-                            <option key={option.id} value={option.label}>{option.label}</option>
-                        ))}
-                    </select>
-                </div>
-                <div>
-                    <label htmlFor="order">Sort by: </label>
-                    <select name="order">
-                            {[{id:1, label: "hours"}, {id: 2, label: "streams"}].map((option) => (
-                                <option key={option.id} value={option.label}>{option.label}</option>
-                            ))}
-                    </select>
-                </div>
+
+                <input type="submit"></input>
             </form>
             {loading === false ?
                 streamingData.map((artist: Artist, key) => (

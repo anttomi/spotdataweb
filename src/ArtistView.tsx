@@ -19,7 +19,6 @@ export default function ArtistView({artist}: {artist: Artist}): JSX.Element {
                 </div>
             </div>
             <div className="Artist-Middle">
-                
                 <span>
                     {`Streams from ${artist.albums.length} album${artist.albums.length>1 ? "s" : ""}`} 
                 </span>
@@ -32,9 +31,8 @@ export default function ArtistView({artist}: {artist: Artist}): JSX.Element {
             {open &&
                 <div className="AlbumCard-Container">
                     {artist.albums.sort((a,b) => 
-                        a.tracks.reduce((acc, current) => acc + current.playCount, 0) > b.tracks.reduce((acc, current) => acc + current.playCount, 0) ? -1 : 1
-                    )
-                    .map((album: Album, key) => (
+                       b.albumPlayCount - a.albumPlayCount
+                    ).map((album: Album, key) => (
                         <AlbumCard album={album} key={key}/>
                     ))}
                 </div>

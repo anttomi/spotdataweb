@@ -16,11 +16,13 @@ export class Album {
     name: string
     tracks: Track[]
     coverURI: string
+    albumPlayCount: number
 
     constructor(name: string) {
         this.name = name
         this.tracks = []
         this.coverURI = ""
+        this.albumPlayCount = 0
     }
 }
  

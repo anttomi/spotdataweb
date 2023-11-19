@@ -1,7 +1,27 @@
 .Album-Container {
     display: flex;
     justify-content: space-between;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    padding-left: 2px;
+    padding: 8px 2px 8px 2px;
+    border-bottom: 1px outset rgba(255, 255, 255, 0.671);
+}
+
+.Track-Row {
+    font-size: 0.8em;
+}
+
+.Track-Row td {
+    padding-right: 8px;
+}
+
+th {
+    text-align: left;
+}
+
+h4 {
+    margin: 0;
+    padding-bottom: 16px;
+}
+
+table {
+    width: 100%;
 }

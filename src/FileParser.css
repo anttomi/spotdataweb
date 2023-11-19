@@ -1,6 +1,6 @@
 .Main-Content {
     display: flex;
-    width: 100%;
+    max-width: 933px;
     flex-direction: column;
     margin: 0 auto;
 }

@@ -15,6 +15,7 @@ export interface Album {
     name: string,
     tracks: Array<Track>,
     coverURI: string
+    albumPlayCount: number
 }
 
 export interface Stream {
