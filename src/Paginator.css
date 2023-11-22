@@ -1,0 +1,32 @@
+.Paginator-Container {
+    width: 100%;
+}
+
+
+.Page-Navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+.Page-Button-Container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.Page-Button {
+    cursor: pointer;
+    width: 35px;
+    margin-left: 4px;
+    margin-right: 4px;
+    text-align: center;
+}
+
+.Footer {
+    display: flex;
+    justify-content: space-between;
+}

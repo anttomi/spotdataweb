@@ -3,6 +3,7 @@ import { Artist } from "./interfaces"
 import './FileParser.css'
 import { collectStreamData } from "./parser"
 import ArtistView from "./ArtistView"
+import Paginator from "./Paginator"
 
 interface FormElements extends HTMLFormElement {
     threshold: HTMLInputElement;
@@ -42,8 +43,9 @@ const FileParser: FunctionComponent = () => {
         })
 
         Promise.all(fileArray).then((r) => {
-            setStreamingData(collectStreamData(r, threshold).filter((a: Artist) => a.totalPlayCount !== 0).sort((a,b) => {
-                return a.msPlayed > b.msPlayed ? -1 : 1}
+            setStreamingData(collectStreamData(r, threshold).filter((a: Artist) => a.totalPlayCount !== 0).sort((a, b) => {
+                return a.msPlayed > b.msPlayed ? -1 : 1
+            }
             ))
             setLoading(() => false)
         })
@@ -52,17 +54,17 @@ const FileParser: FunctionComponent = () => {
     return (
         <div className="Main-Content">
             <form onSubmit={(e) => {
-                    e.preventDefault(); 
-                    const formValues = e.target as FormElements
-                    onFileLoad(
-                        formValues.fileInput.files,
-                        Number(formValues.threshold.value),
-                    )
-                }} 
+                e.preventDefault();
+                const formValues = e.target as FormElements
+                onFileLoad(
+                    formValues.fileInput.files,
+                    Number(formValues.threshold.value),
+                )
+            }}
                 className="Inputs">
                 <div>
                     <label htmlFor="fileInput">Select files:</label>
-                    <input type="file" name="fileInput" multiple accept={".json"}/>
+                    <input type="file" name="fileInput" multiple accept={".json"} />
                 </div>
                 <div>
                     <label htmlFor="threshold">Stream threshold (ms):</label>
@@ -71,11 +73,15 @@ const FileParser: FunctionComponent = () => {
 
                 <input type="submit"></input>
             </form>
+
             {loading === false ?
-                streamingData.map((artist: Artist, key) => (
-                    <ArtistView artist={artist} key={key}></ArtistView>
-                ))
-                : loading === undefined ? <></> : <div>Loading...</div>}
+                <Paginator pageSize={10}>
+                    {streamingData.map((artist: Artist, key) => (
+                        <ArtistView artist={artist} key={key}/>
+                    ))}
+                </Paginator>
+                : loading === undefined ? <></> : <div>Loading...</div>
+            }
         </div>
 
     )
