@@ -9,12 +9,10 @@
     font-size: 0.8em;
 }
 
-.Track-Row td {
-    padding-right: 8px;
-}
-
 th {
     text-align: left;
+    width: 100px;
+    max-width: 150px;
 }
 
 h4 {

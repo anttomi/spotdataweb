@@ -9,7 +9,6 @@ interface FormElements extends HTMLFormElement {
     threshold: HTMLInputElement;
 }
 
-
 const getBase64 = (file: File) => {
     return new Promise<string>((resolve, reject) => {
         const fileReader = new FileReader()
@@ -28,6 +27,9 @@ const FileParser: FunctionComponent = () => {
 
     const [streamingData, setStreamingData] = useState<Array<Artist>>([])
     const [loading, setLoading] = useState<Boolean>()
+
+    //Tools height about 206,5 when small screen, magic number
+    const itemCount = Math.floor((window.innerHeight-206) / 90)
 
     const onFileLoad = async (files: FileList, threshold: number) => {
 
@@ -75,7 +77,7 @@ const FileParser: FunctionComponent = () => {
             </form>
 
             {loading === false ?
-                <Paginator pageSize={10}>
+                <Paginator pageSize={itemCount}>
                     {streamingData.map((artist: Artist, key) => (
                         <ArtistView artist={artist} key={key}/>
                     ))}

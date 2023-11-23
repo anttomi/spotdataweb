@@ -36,7 +36,9 @@ export default function AlbumCard({ album }: { album: Album }): JSX.Element {
 
             </div>
             <div>
-                Total playcount: {album.albumPlayCount}
+                <p>
+                    Total playcount: {album.albumPlayCount}
+                </p>
             </div>
 
         </div>

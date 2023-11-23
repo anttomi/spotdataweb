@@ -1,6 +1,9 @@
 import { Children, ReactNode, createElement, useEffect, useRef, useState } from "react"
 import "./Paginator.css"
 
+//Odd numbers work better
+const navNumbers = 11
+
 export default function Paginator({ children, pageSize }: { children: React.ReactNode, pageSize: number }): JSX.Element {
 
     const [displayed, setDisplayed] = useState<ReactNode[]>([])
@@ -55,17 +58,17 @@ export default function Paginator({ children, pageSize }: { children: React.Reac
 
                     {
                         //TODO: refacture this to something nice looking
-                        page > 5  ?
+                        page > Math.floor(navNumbers/2) ?
                         Array.prototype.concat(
-                            [...Array(6)].map((p, key) => (
+                            [...Array(Math.floor((navNumbers+1)/2))].map((p, key) => (
                                 <div className="Page-Button" key={key + Math.random()} onClick={() => navPage(-key)}>{page - key+1}</div>
                             )).reverse().slice(0, -1),
                             [<div className="Page-Button" style={{fontWeight: 'bold'}} key={Math.random()}>{page+1}</div>],
-                            [...Array(7)].map((p, key) => (
+                            [...Array(Math.floor((navNumbers+1)/2))].map((p, key) => (
                                 <div className="Page-Button" key={key + Math.random()} onClick={() => navPage(key)}>{page + key+1}</div>
-                            )).slice(1, -1)
+                            )).slice(1)
                         )
-                        : [...Array(11)].map((p, key) => (
+                        : [...Array(navNumbers)].map((p, key) => (
                             <div className="Page-Button" style={{fontWeight: page === key ? 'bold' : 'initial' }} key={key + Math.random()} onClick={() => setPage(() => key)}>{key + 1}</div>
                         ))
                     }
@@ -74,11 +77,21 @@ export default function Paginator({ children, pageSize }: { children: React.Reac
             </div>
 
             <div className="Footer">
-                <div>
-                    Total Rows: {Children.count(children)}
-                </div>
+                
+                <button onClick={() => setPage(0)}>{"First Page"}</button>
+                
                 <div>
                     On page: {page + 1}
+                </div>
+                <div>
+                    
+                    <div>
+                        Total Rows: {Children.count(children)}
+
+                    </div>
+                    <div>
+                        Total Pages: {displayed.length}
+                    </div>
                 </div>
             </div>
 
