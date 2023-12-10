@@ -13,8 +13,6 @@ export default function Paginator({ children, pageSize }: { children: React.Reac
     useEffect(() => {
         const totalChildren = Children.toArray(children)
 
-        console.log(totalChildren)
-
         const childrenChopped: ReactNode[] = []
 
         for (let i = 0; i < totalChildren.length; i++) {
@@ -30,7 +28,6 @@ export default function Paginator({ children, pageSize }: { children: React.Reac
             i += pageSize - 1
         }
 
-        console.log(childrenChopped)
         setDisplayed(childrenChopped)
 
     }, [])

@@ -20,7 +20,7 @@
 
 .Page-Button {
     cursor: pointer;
-    width: 35px;
+    width: 100%;
     margin-left: 4px;
     margin-right: 4px;
     text-align: center;

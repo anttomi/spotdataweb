@@ -21,8 +21,8 @@ export default function AlbumCard({ album }: { album: Album }): JSX.Element {
                         </tr>
                     </thead>
                     <tbody>
-                        {album.tracks.sort((a, b) => b.playCount - a.playCount).map((track: Track) => (
-                            <tr>
+                        {album.tracks.sort((a, b) => b.playCount - a.playCount).map((track: Track, key) => (
+                            <tr key={key}>
                                 <td>
                                     {track.name}
                                 </td>
@@ -33,7 +33,6 @@ export default function AlbumCard({ album }: { album: Album }): JSX.Element {
                         ))}
                     </tbody>
                 </table>
-
             </div>
             <div>
                 <p>

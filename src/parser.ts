@@ -26,6 +26,8 @@ export function collectStreamData(files: string[], threshold: number): Artist[] 
                 spotifyURI: stream["spotify_track_uri"]
             }
 
+            
+
             let artist: Artist | undefined = streamData.find((a: Artist) => a.name === cs.artistName)
 
             if (!artist) {

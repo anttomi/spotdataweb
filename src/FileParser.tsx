@@ -12,7 +12,7 @@ interface FormElements extends HTMLFormElement {
 const getBase64 = (file: File) => {
     return new Promise<string>((resolve, reject) => {
         const fileReader = new FileReader()
-        fileReader.readAsBinaryString(file)
+        fileReader.readAsText(file, "utf-8")
 
         fileReader.onload = () => {
             resolve(fileReader.result as string)
@@ -31,7 +31,7 @@ const FileParser: FunctionComponent = () => {
     //Tools height about 206,5 when small screen, magic number
     const itemCount = Math.floor((window.innerHeight-206) / 90)
 
-    const onFileLoad = async (files: FileList, threshold: number) => {
+    const onFileLoad = (files: FileList, threshold: number) => {
 
         if (files.length < 1) return
 
@@ -63,7 +63,9 @@ const FileParser: FunctionComponent = () => {
                     Number(formValues.threshold.value),
                 )
             }}
-                className="Inputs">
+                className="Inputs"
+                encType="application/json"
+                >
                 <div>
                     <label htmlFor="fileInput">Select files:</label>
                     <input type="file" name="fileInput" multiple accept={".json"} />
@@ -73,7 +75,7 @@ const FileParser: FunctionComponent = () => {
                     <input type="number" defaultValue={5000} name="threshold"></input>
                 </div>
 
-                <input type="submit"></input>
+                <input type="submit" ></input>
             </form>
 
             {loading === false ?
