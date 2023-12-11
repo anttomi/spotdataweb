@@ -45,10 +45,7 @@ const FileParser: FunctionComponent = () => {
         })
 
         Promise.all(fileArray).then((r) => {
-            setStreamingData(collectStreamData(r, threshold).filter((a: Artist) => a.totalPlayCount !== 0).sort((a, b) => {
-                return a.msPlayed > b.msPlayed ? -1 : 1
-            }
-            ))
+            setStreamingData(collectStreamData(r, threshold).filter((a: Artist) => a.totalPlayCount !== 0).sort((a, b) => b.msPlayed - a.msPlayed))
             setLoading(() => false)
         })
     }
@@ -64,7 +61,6 @@ const FileParser: FunctionComponent = () => {
                 )
             }}
                 className="Inputs"
-                encType="application/json"
                 >
                 <div>
                     <label htmlFor="fileInput">Select files:</label>
