@@ -1,7 +1,7 @@
 import './styles/App.css'
 import FileParser from './FileParser'
 import Header from './Header'
-import Footer from './footer'
+import Footer from './Footer'
 
 function App() {
 

@@ -28,8 +28,8 @@ const FileParser: FunctionComponent = () => {
     const [streamingData, setStreamingData] = useState<Array<Artist>>([])
     const [loading, setLoading] = useState<Boolean>()
 
-    //Tools height about 206,5 when small screen, magic number
-    const itemCount = Math.floor((window.innerHeight-206) / 90)
+    //Tools height about 206,5, bottom tools about 90 when small screen, magic number
+    const itemCount = Math.floor((window.innerHeight-206-90) / 90)
 
     const onFileLoad = (files: FileList, threshold: number) => {
 
