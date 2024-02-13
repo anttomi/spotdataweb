@@ -1,5 +1,5 @@
 import { FunctionComponent, useRef, useState } from "react"
-import { Artist } from "./interfaces"
+import { Artist } from "./internal/interfaces"
 import './styles/FileParser.css'
 import { collectStreamData } from "./internal/parser"
 import ArtistView from "./ArtistView"

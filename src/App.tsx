@@ -1,6 +1,7 @@
 import './styles/App.css'
 import FileParser from './FileParser'
 import Header from './Header'
+import Footer from './footer'
 
 function App() {
 
@@ -8,6 +9,7 @@ function App() {
     <div className="App">
       <Header />
       <FileParser />
+      <Footer />
     </div>
   )
 }
