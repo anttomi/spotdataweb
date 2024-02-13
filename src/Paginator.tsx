@@ -1,5 +1,5 @@
 import { Children, ReactNode, createElement, useEffect, useRef, useState } from "react"
-import "./Paginator.css"
+import "./styles/Paginator.css"
 
 //Odd numbers work better
 const navNumbers = 11

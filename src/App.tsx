@@ -1,4 +1,4 @@
-import './App.css'
+import './styles/App.css'
 import FileParser from './FileParser'
 import Header from './Header'
 

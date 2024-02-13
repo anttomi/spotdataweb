@@ -1,5 +1,5 @@
 import { Artist, Album } from "./interfaces";
-import "./ArtistView.css"
+import "./styles/ArtistView.css"
 import { useState } from "react";
 import AlbumCard from "./AlbumCard";
 

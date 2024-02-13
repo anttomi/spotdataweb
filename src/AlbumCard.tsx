@@ -1,5 +1,5 @@
 import { Album } from "./Classes";
-import "./AlbumCard.css"
+import "./styles/AlbumCard.css"
 import { Track } from "./interfaces";
 
 export default function AlbumCard({ album }: { album: Album }): JSX.Element {

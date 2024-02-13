@@ -1,7 +1,7 @@
 import { FunctionComponent, useRef, useState } from "react"
 import { Artist } from "./interfaces"
-import './FileParser.css'
-import { collectStreamData } from "./parser"
+import './styles/FileParser.css'
+import { collectStreamData } from "./internal/parser"
 import ArtistView from "./ArtistView"
 import Paginator from "./Paginator"
 
