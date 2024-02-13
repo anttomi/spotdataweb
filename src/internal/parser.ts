@@ -1,4 +1,4 @@
-import { Album, Track, Artist } from "./Classes"
+import { Album, Track, Artist } from "./classes"
 import { Stream } from "./interfaces"
 
 /**

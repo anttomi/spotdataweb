@@ -1,6 +1,5 @@
-import { Album } from "./internal/Classes";
+import { Track, Album } from "./internal/interfaces";
 import "./styles/AlbumCard.css"
-import { Track } from "./internal/interfaces";
 
 export default function AlbumCard({ album }: { album: Album }): JSX.Element {
     return (
