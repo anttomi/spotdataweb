@@ -33,8 +33,10 @@ const FileParser: FunctionComponent = () => {
 
     const onFileLoad = (files: FileList, threshold: number) => {
 
+        //Trying to submit zero files
         if (files.length < 1) return
 
+        //Set loading indicator
         setLoading(() => true)
 
         const fileArray: Promise<string>[] = []

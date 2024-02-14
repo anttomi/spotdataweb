@@ -2,6 +2,7 @@ import { Artist, Album } from "./internal/interfaces";
 import "./styles/ArtistView.css"
 import { useState } from "react";
 import AlbumCard from "./AlbumCard";
+import ArtistMost from "./ArtistMost";
 
 export default function ArtistView({artist}: {artist: Artist}): JSX.Element {
 
@@ -28,12 +29,20 @@ export default function ArtistView({artist}: {artist: Artist}): JSX.Element {
             </div>
             {open &&
                 <div className="AlbumCard-Container">
-                    {artist.albums.sort((a,b) => 
-                       b.albumPlayCount - a.albumPlayCount
-                    ).map((album: Album, key) => (
-                        <AlbumCard album={album} key={key}/>
-                    ))}
-                </div>
+                    <ArtistMost albums={artist.albums}/>
+                
+            
+            {/**
+             <div className="AlbumCard-Container">
+                 {artist.albums.sort((a,b) => 
+                    b.albumPlayCount - a.albumPlayCount
+                 ).map((album: Album, key) => (
+                     <AlbumCard album={album} key={key}/>
+                 ))}
+             </div>
+             * 
+             */}
+             </div>
             }
         </div>
     )

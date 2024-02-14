@@ -1,0 +1,12 @@
+.ArtistMost-Combiner {
+    width: 100%;
+}
+
+.ArtistMost-Combiner table {
+    width: 100%;
+}
+
+td {
+    text-align: left;
+    max-width: 100px;
+}

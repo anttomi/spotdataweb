@@ -33,6 +33,7 @@ export default function Paginator({ children, pageSize }: { children: React.Reac
     }, [])
 
     const navPage = (val: number): void => {
+        //Checks that we are not going out of bounds
         if (displayed.length <= page + val || page + val < 0) {
             return
         }
@@ -58,11 +59,19 @@ export default function Paginator({ children, pageSize }: { children: React.Reac
                         page > Math.floor(navNumbers/2) ?
                         Array.prototype.concat(
                             [...Array(Math.floor((navNumbers+1)/2))].map((p, key) => (
-                                <div className="Page-Button" key={key + Math.random()} onClick={() => navPage(-key)}>{page - key+1}</div>
+                                <div className="Page-Button" key={key + Math.random()} onClick={() => navPage(-key)}>
+                                    {page - key + 1}
+                                </div>
                             )).reverse().slice(0, -1),
-                            [<div className="Page-Button" style={{fontWeight: 'bold'}} key={Math.random()}>{page+1}</div>],
+                            [
+                                <div className="Page-Button" style={{fontWeight: 'bold'}} key={Math.random()}>
+                                    {page + 1}
+                                </div>
+                            ],
                             [...Array(Math.floor((navNumbers+1)/2))].map((p, key) => (
-                                <div className="Page-Button" key={key + Math.random()} onClick={() => navPage(key)}>{page + key+1}</div>
+                                <div className="Page-Button" key={key + Math.random()} onClick={() => navPage(key)}>
+                                    {page + key + 1}
+                                </div>
                             )).slice(1)
                         )
                         : [...Array(navNumbers)].map((p, key) => (
