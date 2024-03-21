@@ -4,6 +4,7 @@ import './styles/FileParser.css'
 import { collectStreamData } from "./internal/parser"
 import ArtistView from "./ArtistView"
 import Paginator from "./Paginator"
+import { generateRandomStreams } from "./internal/datagenerator"
 
 interface FormElements extends HTMLFormElement {
     threshold: HTMLInputElement;
@@ -31,13 +32,27 @@ const FileParser: FunctionComponent = () => {
     //Tools height about 206,5, bottom tools about 90 when small screen, magic number
     const itemCount = Math.floor((window.innerHeight-206-90) / 90)
 
-    const onFileLoad = (files: FileList, threshold: number) => {
-
-        //Trying to submit zero files
-        if (files.length < 1) return
+    const onFileLoad = (files: FileList, threshold: number, useExampleData: boolean = false) => {
 
         //Set loading indicator
         setLoading(() => true)
+
+        //If using example data
+        if (useExampleData) {
+            setStreamingData(
+                collectStreamData([JSON.stringify(generateRandomStreams(500000))], threshold)
+                    .filter((a: Artist) => a.totalPlayCount !== 0)
+                    .sort((a, b) => b.msPlayed - a.msPlayed)
+            )
+            setLoading(() => false)
+            return
+        }
+
+        //Trying to submit zero files
+        if (files.length < 1) {
+            setLoading(() => undefined)
+            return
+        }               
 
         const fileArray: Promise<string>[] = []
 
@@ -47,7 +62,9 @@ const FileParser: FunctionComponent = () => {
         })
 
         Promise.all(fileArray).then((r) => {
-            setStreamingData(collectStreamData(r, threshold).filter((a: Artist) => a.totalPlayCount !== 0).sort((a, b) => b.msPlayed - a.msPlayed))
+            setStreamingData(collectStreamData(r, threshold)
+                .filter((a: Artist) => a.totalPlayCount !== 0)
+                .sort((a, b) => b.msPlayed - a.msPlayed))
             setLoading(() => false)
         })
     }
@@ -60,6 +77,7 @@ const FileParser: FunctionComponent = () => {
                 onFileLoad(
                     formValues.fileInput.files,
                     Number(formValues.threshold.value),
+                    formValues.useExampleData.checked
                 )
             }}
                 className="Inputs"
@@ -72,7 +90,10 @@ const FileParser: FunctionComponent = () => {
                     <label htmlFor="threshold">Stream threshold (ms):</label>
                     <input type="number" defaultValue={5000} name="threshold"></input>
                 </div>
-
+                <div>
+                    <label htmlFor="exampleData">Using example data:</label>
+                    <input type="checkbox" name="useExampleData"></input>
+                </div>
                 <input type="submit" ></input>
             </form>
 

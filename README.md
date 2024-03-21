@@ -14,6 +14,13 @@ Input is requested spotify data (complete streaming history version)
 - Requested Spotify data
 - Node
 
+## Future Goals
+
+- Graphs section / page (Usage of timestamp?)
+- Top 10 artists/songs/albums page
+- ~~Example data generator and usage~~
+- Deployment
+
 ## Readme TODOs
 
 - Write more information about requirements

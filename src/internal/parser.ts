@@ -27,7 +27,6 @@ export function collectStreamData(files: string[], threshold: number): Artist[] 
             if (cs.duration < threshold)
                 return;
 
-
             let artist: Artist | undefined = streamData.find((a: Artist) => a.name === cs.artistName);
 
             if (!artist) {
