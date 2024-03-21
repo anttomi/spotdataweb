@@ -20,6 +20,8 @@ Input is requested spotify data (complete streaming history version)
 - Top 10 artists/songs/albums page
 - ~~Example data generator and usage~~
 - Deployment
+- Collapse / Extend all button
+- Show more data when an artist collapsed (now shows top 5)
 
 ## Readme TODOs
 
