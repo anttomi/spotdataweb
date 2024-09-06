@@ -5,6 +5,8 @@ import { collectStreamData } from "./internal/parser"
 import ArtistView from "./ArtistView"
 import Paginator from "./Paginator"
 import { generateRandomStreams } from "./internal/datagenerator"
+import SummaryTopSongs from "./summary/SummaryTopSongs"
+import SummaryMain from "./summary/SummaryMain"
 
 interface FormElements extends HTMLFormElement {
     threshold: HTMLInputElement;
@@ -40,7 +42,7 @@ const FileParser: FunctionComponent = () => {
         //If using example data
         if (useExampleData) {
             setStreamingData(
-                collectStreamData([JSON.stringify(generateRandomStreams(500000))], threshold)
+                collectStreamData([JSON.stringify(generateRandomStreams(50000))], threshold)
                     .filter((a: Artist) => a.totalPlayCount !== 0)
                     .sort((a, b) => b.msPlayed - a.msPlayed)
             )
@@ -66,6 +68,9 @@ const FileParser: FunctionComponent = () => {
                 .filter((a: Artist) => a.totalPlayCount !== 0)
                 .sort((a, b) => b.msPlayed - a.msPlayed))
             setLoading(() => false)
+        }).catch((e) => {
+            console.error(e)
+            setLoading(() => undefined)
         })
     }
 
@@ -97,7 +102,7 @@ const FileParser: FunctionComponent = () => {
                 <input type="submit" ></input>
             </form>
 
-            {loading === false ?
+            {streamingData.length > 0 ?
                 <Paginator pageSize={itemCount}>
                     {streamingData.map((artist: Artist, key) => (
                         <ArtistView artist={artist} key={key}/>
@@ -105,6 +110,10 @@ const FileParser: FunctionComponent = () => {
                 </Paginator>
                 : loading === undefined ? <></> : <div>Loading...</div>
             }
+
+            <SummaryMain    
+                artists={streamingData}
+            />
         </div>
 
     )

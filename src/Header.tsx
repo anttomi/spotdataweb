@@ -1,6 +1,6 @@
 import "./styles/Header.css"
 
-export default function Header(): JSX.Element {
+export default function Header({ navi }: {navi: React.Dispatch<React.SetStateAction<string>>}): JSX.Element {
     return (
         <div className="Header-Container">
             <h2>Spotify Data Parser</h2>

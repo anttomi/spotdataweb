@@ -8,7 +8,9 @@ export interface Artist {
 export interface Track {
     name: string,
     spotifyURI: string,
-    playCount: number
+    playCount: number,
+    album: Album,
+    artist: Artist
 }
 
 export interface Album {

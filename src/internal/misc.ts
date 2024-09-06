@@ -1,5 +1,3 @@
-
-
 /**
  * Shortens a string if it exceeds a certain length.
  * If the string length is less than or equal to 30, the original string is returned.

@@ -22,6 +22,9 @@ Input is requested spotify data (complete streaming history version)
 - Deployment
 - Collapse / Extend all button
 - Show more data when an artist collapsed (now shows top 5)
+- Loading animation
+- Info box/ popup
+- Support for the shorter spotify data version (at least it used to have different field names)
 
 ## Readme TODOs
 

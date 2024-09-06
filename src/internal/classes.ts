@@ -30,10 +30,14 @@ export class Track {
     name: string
     spotifyURI: string
     playCount: number
-
-    constructor(name: string, URI: string) {
+    album: Album
+    artist: Artist
+    
+    constructor(name: string, URI: string, album: Album, artist: Artist) {
         this.name = name
         this.spotifyURI = URI
         this.playCount = 0
+        this.album = album
+        this.artist = artist
     }
 }

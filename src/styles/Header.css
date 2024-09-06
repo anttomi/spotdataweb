@@ -1,13 +1,32 @@
+nav {
+  background-color: #333;
+  color: white;
+  padding: 1px;
+  border-radius: 3px;
+  text-decoration-line: underline;
+  text-underline-offset: 8px;
+  height: fit-content;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+nav button {
+  padding: 4px;
+  margin: 6px;
+  border-radius: 3px;
+}
+
 .Header-Container h2 {
-    margin: 0;
-    padding: 4px;
-  }
+  margin: 0px 0px 8px 0px;
+  padding: 4px;
+}
 
 .Header-Container img {
   padding: 4px 12px 4px
 }
 
 .Header-Container {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }

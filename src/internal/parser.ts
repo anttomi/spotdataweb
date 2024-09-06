@@ -24,7 +24,8 @@ export function collectStreamData(files: string[], threshold: number): Artist[] 
                 spotifyURI: stream["spotify_track_uri"],
             };
 
-            if (cs.duration < threshold)
+            // If the song does not have a name, it was probably removed from Spotify
+            if (cs.duration < threshold || cs.trackName === null)
                 return;
 
             let artist: Artist | undefined = streamData.find((a: Artist) => a.name === cs.artistName);
@@ -44,7 +45,7 @@ export function collectStreamData(files: string[], threshold: number): Artist[] 
             let track: Track | undefined = album.tracks.find((track: Track) => track.name === cs.trackName);
 
             if (!track) {
-                track = new Track(cs.trackName, cs.spotifyURI);
+                track = new Track(cs.trackName, cs.spotifyURI, album, artist);
                 album.tracks.push(track);
             }
 

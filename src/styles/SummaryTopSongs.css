@@ -1,0 +1,28 @@
+.SummaryTopSongs-Main {
+    
+}
+.SummaryTopSongs-Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.SummaryTopSongs-Header button {
+    text-decoration: underline;
+    text-underline-offset: 8px;
+    height: fit-content;
+    padding: 4px;
+    margin: 6px;
+}
+
+.SummaryTopSongs-Body table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.SummaryTopSongs-Body td {
+    text-align: left;
+}
+
+.SummaryTopSongs-Body th {
+    text-align: left;
+}

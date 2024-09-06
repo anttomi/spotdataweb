@@ -6,7 +6,6 @@ export default function ArtistMost({ albums }: { albums: Album[] }): JSX.Element
     return (
         <div className="ArtistMost-Main">
             <div className="ArtistMost-Header">
-
             </div>
             <div className="ArtistMost-Body">
                 <table className="ArtistMost-Combiner">
@@ -29,7 +28,7 @@ export default function ArtistMost({ albums }: { albums: Album[] }): JSX.Element
                                     <tbody>
                                         {albums.sort((a, b) => b.albumPlayCount - a.albumPlayCount).slice(0, 5).map((album, key) => (
                                             <tr key={key} className="ArtistMost-Album">
-                                                <td>{shortenName(album.name)}</td>
+                                                <td title={album.name}>{shortenName(album.name)}</td>
                                                 <td>{album.albumPlayCount}</td>
                                             </tr>
                                         ))}
@@ -47,7 +46,7 @@ export default function ArtistMost({ albums }: { albums: Album[] }): JSX.Element
                                     <tbody>
                                         {albums.flatMap(album => album.tracks).sort((a, b) => b.playCount - a.playCount).slice(0, 5).map((track, key) => (
                                             <tr key={key} className="ArtistMost-Track">
-                                                <td>{shortenName(track.name)}</td>
+                                                <td title={track.name}>{shortenName(track.name)}</td>
                                                 <td>{track.playCount}</td>
                                             </tr>
                                         ))}
