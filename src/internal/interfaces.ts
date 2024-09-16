@@ -1,7 +1,7 @@
 export interface Artist {
     name: string,
     msPlayed: number,
-    albums: Array<Album>,
+    albums: Album[],
     totalPlayCount: number
 }
 
@@ -11,11 +11,12 @@ export interface Track {
     playCount: number,
     album: Album,
     artist: Artist
+    timesPlayed: string[]
 }
 
 export interface Album {
     name: string,
-    tracks: Array<Track>,
+    tracks: Track[],
     coverURI: string
     albumPlayCount: number
 }
@@ -26,4 +27,5 @@ export interface Stream {
     artistName: string
     albumName: string
     spotifyURI: string
+    timestamp: string
 }

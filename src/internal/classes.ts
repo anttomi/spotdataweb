@@ -32,6 +32,7 @@ export class Track {
     playCount: number
     album: Album
     artist: Artist
+    timesPlayed: string[]
     
     constructor(name: string, URI: string, album: Album, artist: Artist) {
         this.name = name
@@ -39,5 +40,6 @@ export class Track {
         this.playCount = 0
         this.album = album
         this.artist = artist
+        this.timesPlayed = []
     }
 }

@@ -22,6 +22,7 @@ export function collectStreamData(files: string[], threshold: number): Artist[] 
                 artistName: stream["master_metadata_album_artist_name"],
                 albumName: stream["master_metadata_album_album_name"],
                 spotifyURI: stream["spotify_track_uri"],
+                timestamp: stream["ts"]
             };
 
             // If the song does not have a name, it was probably removed from Spotify
@@ -48,13 +49,12 @@ export function collectStreamData(files: string[], threshold: number): Artist[] 
                 track = new Track(cs.trackName, cs.spotifyURI, album, artist);
                 album.tracks.push(track);
             }
-
             
             artist.msPlayed += cs.duration;
             artist.totalPlayCount += 1;
             album.albumPlayCount += 1;
             track.playCount += 1;
-            
+            track.timesPlayed.push(cs.timestamp);
         });
     });
     
