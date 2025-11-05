@@ -6,7 +6,7 @@
  * @returns {string} The shortened string.
  */
 
-export function shortenName(str: string) {
+export function shortenName(str: string): string {
     if (str.length <= 30) {
         return str;
     }

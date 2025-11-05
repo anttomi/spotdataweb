@@ -1,5 +1,5 @@
-import { Album } from "./internal/interfaces";
-import { shortenName } from "./internal/misc";
+import { Album } from "./internal/interfaces.ts";
+import { shortenName } from "./internal/misc.ts";
 import "./styles/ArtistMost.css"
 
 export default function ArtistMost({ albums }: { albums: Album[] }): JSX.Element {

@@ -1,8 +1,7 @@
 import './styles/App.css'
-import FileParser from './FileParser'
-import Header from './Header'
-import Footer from './Footer'
-import { useState } from 'react'
+import FileParser from './FileParser.tsx'
+import Header from './Header.tsx'
+import Footer from './Footer.tsx'
 
 function App() {
 

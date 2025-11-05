@@ -1,6 +1,6 @@
-import { Artist } from "../internal/interfaces";
-import SummaryTimeChart from "./SummaryTimeChart";
-import SummaryTopSongs from "./SummaryTopSongs";
+import { Artist } from "../internal/interfaces.ts";
+import SummaryTimeChart from "./SummaryTimeChart.tsx";
+import SummaryTopSongs from "./SummaryTopSongs.tsx";
 
 export default function SummaryMain({ artists } : { artists: Artist[] }): JSX.Element {
     return (

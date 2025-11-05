@@ -17,7 +17,7 @@ Input is requested spotify data (complete streaming history version)
 ## Future Goals
 
 - Graphs section / page (Usage of timestamp?)
-- Top 10 artists/songs/albums page
+- Top 10 artists/~~songs~~/albums page
 - ~~Example data generator and usage~~
 - Deployment
 - Collapse / Extend all button

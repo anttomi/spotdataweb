@@ -1,4 +1,4 @@
-import { Children, ReactNode, createElement, useEffect, useRef, useState } from "react"
+import { Children, ReactNode, useEffect, useState } from "react"
 import "./styles/Paginator.css"
 
 //Odd numbers work better

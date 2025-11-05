@@ -1,0 +1,31 @@
+.SummaryTimeChart-Main {
+    display: flex;
+    justify-content: space-between;
+    gap: 3px;
+    width: 100%;
+    height: auto;
+    padding-bottom: 24px;
+}
+
+.SummaryTimeChart-Bar {
+    height: auto;
+}
+
+.SummaryTimeChart-Hour-Label {
+    font-size: small;
+}
+
+.SummaryTimeChart-Header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.SummaryTimeChart-Header button {
+    text-decoration: underline;
+    text-underline-offset: 8px;
+    height: fit-content;
+    padding: 4px;
+    margin: 6px;
+}

@@ -78,6 +78,9 @@ const FileParser: FunctionComponent = () => {
         <div className="Main-Content">
             <form onSubmit={(e) => {
                 e.preventDefault();
+                if (streamingData.length > 0) {
+                    setStreamingData([])
+                }
                 const formValues = e.target as FormElements
                 onFileLoad(
                     formValues.fileInput.files,
@@ -87,7 +90,7 @@ const FileParser: FunctionComponent = () => {
             }}
                 className="Inputs"
                 >
-                <div>
+                <div className="File-Input">
                     <label htmlFor="fileInput">Select files:</label>
                     <input type="file" name="fileInput" multiple accept={".json"} />
                 </div>
@@ -108,7 +111,7 @@ const FileParser: FunctionComponent = () => {
                         <ArtistView artist={artist} key={key}/>
                     ))}
                 </Paginator>
-                : loading === undefined ? <></> : <div>Loading...</div>
+                : loading === undefined ? <div></div> : <div>Loading...</div>
             }
 
             <SummaryMain    

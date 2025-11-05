@@ -1,0 +1,35 @@
+rect {
+    fill: url(#grad1);
+    shape-rendering: crispEdges;
+    height: 100%;
+    width: 100%;
+}
+
+rect:hover {
+    fill: url(#grad2);
+}
+
+.Bar-Basic:hover:after {
+    content: attr(data-count);
+    position: fixed;
+    bottom: 50%;    
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    z-index: 1;
+    transform: rotate(180deg);
+    pointer-events: none;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+.Bar-Basic {
+    height: 100%;
+    width: 100%;    
+    transform: rotate(180deg);
+}
+
+svg {
+    display: block;
+    transform: rotate(180deg);
+}

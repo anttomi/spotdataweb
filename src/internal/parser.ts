@@ -1,5 +1,5 @@
-import { Album, Track, Artist } from "./classes"
-import { Stream } from "./interfaces"
+import { Album, Track, Artist } from "./classes.ts"
+import { Stream } from "./interfaces.ts"
 
 /**
  * @brief Parse all data, data is json files as string.

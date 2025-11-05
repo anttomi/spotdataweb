@@ -1,4 +1,4 @@
-import { Track, Album } from "./internal/interfaces";
+import { Track, Album } from "./internal/interfaces.ts";
 import "./styles/AlbumCard.css"
 
 export default function AlbumCard({ album }: { album: Album }): JSX.Element {

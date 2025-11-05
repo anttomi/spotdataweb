@@ -1,8 +1,8 @@
-import { Artist, Album } from "./internal/interfaces";
+import { Artist, Album } from "./internal/interfaces.ts";
 import "./styles/ArtistView.css"
 import { useState } from "react";
-import AlbumCard from "./AlbumCard";
-import ArtistMost from "./ArtistMost";
+import AlbumCard from "./AlbumCard.tsx";
+import ArtistMost from "./ArtistMost.tsx";
 
 export default function ArtistView({artist}: {artist: Artist}): JSX.Element {
 

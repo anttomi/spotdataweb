@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Artist, Album, Track } from "../internal/interfaces";
-import { shortenName } from "../internal/misc";
+import { Artist, Album, Track } from "../internal/interfaces.ts";
+import { shortenName } from "../internal/misc.ts";
 import '../styles/SummaryTopSongs.css';
 
 export default function SummaryTopSongs({ artists }: { artists: Artist[] }): JSX.Element {
@@ -16,7 +16,8 @@ export default function SummaryTopSongs({ artists }: { artists: Artist[] }): JSX
 
     useEffect(() => {
         setTopSongs(calculateTopSongs(artists))
-    }, [artists])
+        scrollTo(0, document.body.scrollHeight);
+    }, [open])
 
     if (topSongs.length < 1) {
         return (

@@ -21,3 +21,7 @@
 .Inputs div {
     margin-right: 8px;
 }
+
+.File-Input input {
+    max-width: 200px;
+}
