@@ -16,10 +16,12 @@ Input is requested spotify data (complete streaming history version)
 
 ## Future Goals
 
-- Graphs section / page ~~(Usage of timestamp?)~~
+- ~~Graphs section~~ / page ~~(Usage of timestamp?)~~
 - Move graphs and pages to separate screens(?)
 - Top 10 artists/~~songs~~/albums page
+- ~~Day Grid~~, Day Grid Legend, Use better colors
 - ~~Example data generator and usage~~
+- Automate scroll on summary components
 - Deployment
 - Collapse / Extend all button
 - Show more data when an artist collapsed in a ui friendly way (now shows top 5)

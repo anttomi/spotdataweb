@@ -7,7 +7,6 @@ const navNumbers = 11
 export default function Paginator({ children, pageSize }: { children: React.ReactNode, pageSize: number }): JSX.Element {
 
     const [displayed, setDisplayed] = useState<ReactNode[]>([])
-
     const [page, setPage] = useState<number>(0)
 
     useEffect(() => {
@@ -38,7 +37,6 @@ export default function Paginator({ children, pageSize }: { children: React.Reac
             return
         }
 
-        console.log("Page", page + val)
         setPage(prev => prev + val)
     }
 

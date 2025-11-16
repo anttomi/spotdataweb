@@ -1,0 +1,19 @@
+.Square-Day {
+    width: 12px;
+    height: 12px;    
+    margin: 4px;
+    border: 1px solid;
+    border-color: black;    
+}
+
+.Square-Day:hover:after {
+    content: attr(data-count);  
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    margin-left: 18px;
+    position: relative;
+    z-index: 1;
+    border-radius: 4px;
+    white-space: pre;
+}

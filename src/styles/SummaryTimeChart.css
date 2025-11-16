@@ -3,8 +3,7 @@
     justify-content: space-between;
     gap: 3px;
     width: 100%;
-    height: auto;
-    padding-bottom: 24px;
+    height: auto;    
 }
 
 .SummaryTimeChart-Bar {
@@ -20,6 +19,7 @@
     justify-content: space-between;
     width: 100%;
     margin-bottom: 8px;
+    align-items: center;
 }
 
 .SummaryTimeChart-Header button {
@@ -28,4 +28,5 @@
     height: fit-content;
     padding: 4px;
     margin: 6px;
+    
 }

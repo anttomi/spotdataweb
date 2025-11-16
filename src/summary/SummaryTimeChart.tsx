@@ -30,7 +30,9 @@ export default function SummaryTimeChart({ artists }: { artists: Artist[] }): JS
     }
 
     useEffect(() => {
-        scrollTo(0, document.body.scrollHeight);
+        if (!open) {
+            return
+        }
         setBarData(calculateTimeChart(artists))
     }, [open])
 

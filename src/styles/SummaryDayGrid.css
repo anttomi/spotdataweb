@@ -1,0 +1,62 @@
+.SummaryDayGrid-Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.SummaryDayGrid-Header button {
+    text-decoration: underline;
+    text-underline-offset: 8px;
+    height: fit-content;
+    padding: 4px;
+    margin: 6px;
+}
+.SummaryDayGrid-Grid {
+    display: flex;
+    flex-direction: column;
+}
+
+.SummaryDayGrid-Month {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.SummaryDayGrid-Year {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 16px;
+    flex: 12;
+    gap: 8px;    
+    background-color: rgba(0,0,0, 0.2);
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.SummaryDayGrid-All-Months {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.SummaryDayGrid-Year-Header {
+    padding-left: 6px;
+    font-size: 1rem;
+
+}
+
+.SummaryDayGrid-Month {
+    display: flex;
+    flex-direction: column;
+}
+
+.SummaryDayGrid-Month-Squares {
+    display: grid;
+    grid: auto-flow / 1fr 1fr 1fr;    
+}
+
+.SummaryDayGrid-Month-Header {
+    font-size: small;
+    padding-left: 6px;
+}

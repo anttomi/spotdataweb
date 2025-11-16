@@ -15,11 +15,13 @@ export default function SummaryTopSongs({ artists }: { artists: Artist[] }): JSX
     }
 
     useEffect(() => {
+        if (!open) {
+            return
+        }
         setTopSongs(calculateTopSongs(artists))
-        scrollTo(0, document.body.scrollHeight);
     }, [open])
 
-    if (topSongs.length < 1) {
+    if (artists.length < 1) {
         return (
             <>
             </>
